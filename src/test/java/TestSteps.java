@@ -1,22 +1,22 @@
-import org.junit.Before;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static java.lang.Thread.*;
 
 public class TestSteps {
 
 
-    @Before
-    public static void main(String[] args) {
-
+    @Test
+    public static void main(String[] args) throws InterruptedException {
+        //Browser Setup
         System.setProperty("webdriver.chrome.driver","C:\\Users\\EXT02D26039\\IdeaProjects\\hepsiburada\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+        //Url Adresi
         driver.get("https://www.hepsiburada.com/");
-
-        WebDriverWait wait = new WebDriverWait(driver,2);
 
         //Arama Kutusu
         WebElement searchProduct = driver.findElement(By.cssSelector("input.desktopOldAutosuggestTheme-input"));
@@ -27,10 +27,12 @@ public class TestSteps {
         //Urun Arama Giris
         WebElement searchButton = driver.findElement(By.className("SearchBoxOld-buttonContainer"));
         searchButton.click();
+            sleep(1000);
 
         //Urun Secme
         WebElement selectProduct = driver.findElement(By.cssSelector("li#i6>div>a.moria-ProductCard-gyqBb "));
         selectProduct.click();
+            sleep(2000);
 
         //Yorumlara tiklama
         WebElement Comments = driver.findElement(By.className("ratings active hbus e5d86377-d1b9-43bf-8041-f38a1f5b435f"));
